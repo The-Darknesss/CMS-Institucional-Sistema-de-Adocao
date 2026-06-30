@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo</title>
+    <link rel="stylesheet" href="/style.css"> 
+    <style>
+        /* Estilos específicos para a página de admin */
+        main {
+            width: 90%; max-width: 1200px; margin: 2rem auto; padding: 2rem;
+            background-color: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h2 { border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; margin-top: 30px; }
+        form { background-color: #f9f9f9; padding: 20px; border-radius: 5px; margin-top: 15px; }
+        
+        /* ✅ ADIÇÃO 1: Adicionei 'select' aqui para que ele tenha o mesmo estilo */
+        input[type="text"], input[type="file"], textarea, select {
+            width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 4px; border: 1px solid #ddd;
+        }
+        button {
+            background-color: #28a745; color: white; padding: 10px 15px;
+            border: none; border-radius: 5px; cursor: pointer;
+        }
+        button:hover { background-color: #218838; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #333; color: white; }
+        tr:hover { background-color: #f5f5f5; }
+        .btn-excluir { background-color: #dc3545; color: white; padding: 6px 10px; border-radius: 4px; cursor: pointer; }
+        .btn-excluir:hover { background-color: #c82333; }
+        
+        /* Botão de Editar */
+        .btn-editar {
+            background-color: #007bff; color: white; padding: 6px 10px;
+            border-radius: 4px; cursor: pointer; border: none; margin-right: 5px;
+        }
+        .btn-editar:hover { background-color: #0056b3; }
+
+        /* Estilos do Modal de Edição */
+        .modal {
+            display: none; /* Começa escondido */
+            position: fixed; z-index: 1000; left: 0; top: 0;
+            width: 100%; height: 100%; overflow: auto;
+            background-color: rgba(0,0,0,0.5); /* Fundo escuro semi-transparente */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto; /* Centraliza verticalmente */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 700px;
+            border-radius: 8px;
+            position: relative;
+        }
+        .modal-close {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .modal-close:hover { color: #000; }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li>
+                <a href="/" id="logo-btn">
+                    <img src="/Logo Sanches.png" alt="Início - Logo CMS Institucional">
+                </a>
+            </li>
+
+                <li><a href="/mobilidade.html">Mobilidade</a></li>
+                <li><a href="/seguranca.html">Segurança Pública</a></li>
+                <li><a href="/causa-animal.html">Causa Animal</a></li>
+                <li><a href="/familia.html">Família</a></li>
+                <li><a href="/esporte.html">Esporte</a></li>
+                <li><a href="/noticias.html">Notícias</a></li>
+                <li><a href="/adocao.html">Encontre um AUmigo!</a></li>
+            
+        </ul>
+    </nav>
+</header>
+
+    <main>
+        <h1 style="text-align: center;">Painel Administrativo</h1>
+
+        <section id="gerenciar-noticias">
+            <h2>Gerenciar Notícias</h2>
+            
+            <h3>Publicar Nova Notícia</h3>
+            <form id="form-noticia">
+                <label for="titulo">Título:</label><br>
+                <input type="text" id="titulo" name="titulo" required><br><br>
+                <label for="conteudo">Conteúdo da Notícia:</label><br>
+                <textarea id="conteudo" name="conteudo" rows="5" required></textarea><br><br>
+
+                <label for="categoria">Categoria:</label><br>
+                <select id="categoria" name="categoria" required>
+                    <option value="">-- Escolha uma categoria --</option>
+                    <option value="Mobilidade">Mobilidade</option>
+                    <option value="Segurança Pública">Segurança Pública</option>
+                    <option value="Família">Família</option>
+                    <option value="Esporte">Esporte</option>
+                    <option value="Causa Animal">Causa Animal</option>
+                </select><br><br>
+                
+                <label for="foto_noticia">Imagem da Notícia (Opcional):</label><br>
+                <input type="file" id="foto_noticia" name="foto_noticia" accept="image/*"><br><br>
+                <button type="submit">Publicar Notícia</button>
+            </form>
+            <p id="mensagem-noticia" style="margin-top: 10px;"></p>
+            
+        </section>
+
+        <hr style="margin: 40px 0;">
+
+        <section id="gerenciar-animais">
+            <h2>Gerenciar Animais Cadastrados</h2>
+            <div id="animais-listagem">
+                <p>Carregando animais cadastrados...</p>
+            </div>
+        </section>
+    </main>
+
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span id="modal-close-btn" class="modal-close">&times;</span>
+            <h2>Editar Notícia</h2>
+            <form id="form-noticia-edit">
+                <input type="hidden" id="noticia-id-edit" name="noticia_id_edit">
+
+                <label for="titulo-edit">Título:</label><br>
+                <input type="text" id="titulo-edit" name="titulo_edit" required><br><br>
+
+                <label for="conteudo-edit">Conteúdo da Notícia:</label><br>
+                <textarea id="conteudo-edit" name="conteudo_edit" rows="5" required></textarea><br><br>
+
+                <label for="categoria-edit">Categoria:</label><br>
+                <select id="categoria-edit" name="categoria_edit" required>
+                    <option value="">-- Escolha uma categoria --</option>
+                    <option value="Mobilidade">Mobilidade</option>
+                    <option value="Segurança Pública">Segurança Pública</option>
+                    <option value="Família">Família</option>
+                    <option value="Esporte">Esporte</option>
+                    <option value="Causa Animal">Causa Animal</option>
+                </select><br><br>
+
+                <label for="foto-noticia-edit">Trocar Imagem (Opcional):</label><br>
+                <p>Deixe em branco para manter a imagem atual.</p>
+                <input type="file" id="foto-noticia-edit" name="foto_noticia_edit" accept="image/*"><br><br>
+
+                <button type="submit">Salvar Alterações</button>
+            </form>
+            <p id="mensagem-noticia-edit" style="margin-top: 10px;"></p>
+        </div>
+    </div>
+    <script src="/admin.js"></script> 
+</body>
+</html>

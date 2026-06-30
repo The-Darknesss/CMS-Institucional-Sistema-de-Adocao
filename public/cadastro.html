@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Animal para Doação</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+<header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/" id="logo-btn">
+                        <img src="/Logo Sanches.png" alt="Início - Logo CMS Institucional">
+                    </a>
+                </li>
+
+                <li><a href="/mobilidade.html">Mobilidade</a></li>
+                <li><a href="/seguranca.html">Segurança Pública</a></li>
+                <li><a href="/causa-animal.html">Causa Animal</a></li>
+                <li><a href="/familia.html">Família</a></li>
+                <li><a href="/esporte.html">Esporte</a></li>
+                <li><a href="/noticias.html">Notícias</a></li>
+                <li><a href="/adocao-lista.html">Ver Animais</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1>Formulário de Cadastro</h1>
+    
+<form action="/enviar-dados" method="post" enctype="multipart/form-data">
+    
+    <h2>Informações do Animal</h2>
+    
+    <div>
+        <label for="foto">Foto Principal do Animal:</label>
+        <input type="file" id="foto" name="foto" accept="image/*" required>
+    </div>
+    
+    <div>
+        <label for="nome">Nome do Animal:</label>
+        <input type="text" id="nome" name="nome" required>
+    </div>
+    <div>
+        <label for="especie">Espécie:</label>
+        <select id="especie" name="especie" required>
+            <option value="">Selecione a espécie</option>
+            <option value="cachorro">Cachorro</option>
+            <option value="gato">Gato</option>
+            <option value="outro">Outro</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="idade">Idade (em anos):</label>
+        <input type="number" id="idade" name="idade" min="0" max="25" required>
+    </div>
+    <div>
+        <label for="raca">Raça (Ex: Poodle, SRD):</label>
+        <input type="text" id="raca" name="raca" required>
+    </div>
+    
+    <div>
+        <label>Sexo:</label><br>
+        <input type="radio" id="sexo-m" name="sexo" value="macho" required>
+        <label for="sexo-m">Macho</label>
+        <input type="radio" id="sexo-f" name="sexo" value="femea">
+        <label for="sexo-f">Fêmea</label>
+    </div>
+    
+    <div>
+        <label>É Castrado?</label><br>
+        <input type="radio" id="castrado-s" name="castrado" value="Sim" required>
+        <label for="castrado-s">Sim</label>
+        <input type="radio" id="castrado-n" name="castrado" value="Não">
+        <label for="castrado-n">Não</label>
+    </div>
+
+    <div>
+        <label>É Vacinado?</label><br>
+        <input type="radio" id="vacinado-s" name="vacinado" value="Sim" required>
+        <label for="vacinado-s">Sim</label>
+        <input type="radio" id="vacinado-n" name="vacinado" value="Não">
+        <label for="vacinado-n">Não</label>
+    </div>
+
+    <div>
+        <label for="descricao">Conte a história e detahes, como o comportamento e temperamento do animal (máx. 300 caracteres):</label>
+        <textarea id="descricao" name="descricao" rows="5" maxlength="300" required></textarea>
+    </div>
+    
+
+    <hr>
+    <h2>Contato do Doador</h2>
+    
+    <div>
+        <label for="contato_tel">Telefone para Contato (Obrigatório):</label>
+        <input type="tel" id="contato_tel" name="contato_tel" required>
+    </div>
+
+    <div>
+        <label for="contato_email">E-mail para Contato (Opcional):</label>
+        <input type="email" id="contato_email" name="contato_email">
+    </div>
+    
+    <button type="submit">Cadastrar para Doação</button>
+    
+</form>
+</body>
+</html>

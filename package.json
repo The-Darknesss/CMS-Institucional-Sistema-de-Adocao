@@ -1,0 +1,22 @@
+{
+  "name": "cms-institucional-adocao",
+  "version": "1.0.0",
+  "description": "CMS Institucional e Sistema de Adoção",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/blob": "^2.0.0",
+    "@vercel/node": "^5.3.26",
+    "body-parser": "^2.2.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mongoose": "^8.19.1",
+    "multer": "^2.0.2",
+    "path": "^0.12.7"
+  }
+}

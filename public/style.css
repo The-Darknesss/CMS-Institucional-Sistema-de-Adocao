@@ -1,0 +1,560 @@
+/* ===============================
+   1. RESET GERAL E BODY
+   (Remove a barra branca do topo)
+   =============================== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; 
+    background-color: #f4f4f9; 
+}
+
+/* ===============================
+   2. HEADER E NAVEGAÇÃO PRINCIPAL
+   =============================== */
+header {
+    background-color: #0d0d3b; /* Fundo azul escuro */
+    padding: 10px 0;
+    width: 100%; /* Ocupa a largura total */
+}
+
+nav ul {
+    list-style: none; /* Remove marcadores de lista */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Para os itens ficarem lado a lado */
+    justify-content: flex-start; /* Alinha os itens à esquerda */
+    align-items: center; /* Centraliza os itens verticalmente */
+    max-width: 1200px; /* Limita a largura do menu */
+    margin: 0 auto; /* Centraliza o menu na tela */
+    padding: 0 20px; /* Espaçamento interno */
+}
+
+nav ul li {
+    margin-right: 25px; /* Espaço entre os itens do menu */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px; /* Espaçamento interno dos botões */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    white-space: nowrap; /* Impede quebras de linha em itens longos */
+    display: block; /* Para o padding funcionar corretamente */
+}
+
+nav ul li a:hover {
+    background-color: #2a2a6e; /* Cor ao passar o mouse */
+}
+
+/* --- Estilo do Logo no Menu --- */
+#logo-btn {
+    padding: 0; /* Remove padding extra */
+    margin-right: 25px; /* Mantém o espaçamento */
+    display: flex; 
+    align-items: center; /* Centraliza verticalmente a imagem */
+    height: 60px; /* Altura da área do logo */
+    text-decoration: none; /* Remove o sublinhado */
+}
+
+#logo-btn:hover {
+    background-color: transparent; /* Garante que não há fundo ao passar o mouse */
+}
+
+#logo-btn img {
+    height: 50px; /* Altura da imagem do logo */
+    width: auto;  
+    vertical-align: middle; 
+    display: block; 
+}
+
+/* ===============================
+   3. LAYOUT DA PÁGINA INICIAL (GRID)
+   =============================== */
+.page-container {
+    display: grid;
+    grid-template-columns: 1fr 300px; /* 2 colunas: conteúdo + sidebar */
+    gap: 40px; 
+    max-width: 1200px; 
+    margin: 40px auto;
+    padding: 0 20px; 
+}
+
+/* ===============================
+   4. SIDEBAR (Widgets Amarelos)
+   =============================== */
+.sidebar-widget {
+    background-color: #f7b731; /* Fundo amarelo */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.sidebar-widget h3 {
+    margin-top: 0;
+    color: #000; 
+    font-size: 1.5rem;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1); 
+    padding-bottom: 10px;
+}
+
+.sidebar-widget ul {
+    list-style-type: '•'; 
+    padding-left: 20px;
+    margin: 0;
+}
+
+.sidebar-widget li {
+    margin-bottom: 12px;
+}
+
+.sidebar-widget a {
+    color: #000; 
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.sidebar-widget a:hover {
+    text-decoration: underline; 
+}
+
+.sidebar-widget img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    transition: transform 0.2s;
+}
+
+.sidebar-widget img:hover {
+    transform: scale(1.03); 
+}
+
+/* --- Submenu da Sidebar --- */
+#trigger-participacoes {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #000;
+    display: block; 
+}
+
+#trigger-participacoes::after {
+    content: ' ▼';
+    font-size: 0.8em;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.submenu-content {
+    list-style-type: '›'; 
+    padding-left: 20px;
+    margin-top: 10px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.submenu-content.active {
+    max-height: 500px; /* Expande */
+}
+
+#trigger-participacoes.active::after {
+    transform: rotate(180deg); /* Gira a seta */
+}
+
+.submenu-content li {
+    margin-bottom: 8px;
+}
+.submenu-content a {
+    font-weight: normal; 
+    font-size: 1rem;
+}
+
+/* ===============================
+   5. CARROSSEL DE NOTÍCIAS (Home)
+   =============================== */
+#recent-news-carousel {
+    max-width: 500px; 
+    margin: 40px auto; 
+    text-align: center;
+}
+
+#slides-container {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Quadrado fixo */
+    position: relative;  
+    overflow: hidden;    
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #eee; 
+}
+
+.carousel-slide {
+    width: 100%;
+    height: 100%;
+    position: absolute; 
+    top: 0;
+    left: 0;
+    background-size: cover;   
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0; /* Começa invisível */
+    transition: opacity 1s ease-in-out; 
+}
+
+.carousel-slide.active {
+    opacity: 1; /* Slide ativo fica visível */
+}
+
+.carousel-slide .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7); 
+    color: white;
+    padding: 10px 20px;
+    text-align: left;
+}
+
+.carousel-slide .caption h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+/* Descrição do Carrossel */
+.carousel-description {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+    margin-top: 15px; 
+    height: 4.5em; /* Altura fixa de 3 linhas */
+    text-align: justify;
+    overflow: hidden; /* Esconde texto que vazar */
+}
+
+/* ===============================
+   6. MODAL DE NOTÍCIAS (Home Pop-up)
+   =============================== */
+.modal-overlay {
+    display: none; 
+    position: fixed; 
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); 
+    justify-content: center;
+    align-items: center;
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex; /* Mostra o modal */
+    opacity: 1; 
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 700px; 
+    position: relative;
+    max-height: 80vh; 
+    overflow-y: auto; 
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: #000;
+}
+
+#modal-news-title {
+    margin-top: 0;
+}
+
+#modal-news-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* ===============================
+   7. PÁGINA DE NOTÍCIAS & PAUTAS
+   =============================== */
+.separador-mes {
+    font-size: 2rem; 
+    color: #333; 
+    border-bottom: 2px solid #555; 
+    padding-bottom: 10px;
+    margin-top: 50px; 
+    margin-bottom: 30px;
+}
+
+.noticia-item {
+    border-bottom: 3px solid #dc3545; /* Separador vermelho visível */
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+}
+
+.noticia-titulo {
+    margin-top: 0;
+    font-size: 1.8rem;
+    color: #222;
+}
+
+.noticia-data {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 20px; 
+}
+
+.noticia-imagem {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 20px; 
+}
+
+.noticia-conteudo {
+    font-size: 1.1rem;
+    line-height: 1.6; 
+}
+
+/* =========================================
+   8. PÁGINAS DE ADOÇÃO (Formulários, Listas)
+   (Estilos antigos que ainda são usados)
+   ========================================= */
+
+/* Estilo do título H1 nas páginas de formulário */
+h1 {
+    color: #333;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #1f2858; 
+    padding-bottom: 10px;
+}
+
+/* Estilo do contêiner do formulário (cadastro.html) */
+form {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    width: 100%;
+    max-width: 600px; 
+    margin: 40px auto;
+}
+
+div {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block; 
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"],
+input[type="file"],
+select,
+textarea {
+    width: 95%; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; 
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="file"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #1f2858; 
+    outline: none; 
+}
+
+textarea {
+    resize: vertical; 
+}
+
+div > label {
+    display: inline-block; 
+    margin-right: 15px;
+    font-weight: normal;
+}
+
+button[type="submit"] {
+    background-color: #1f2858; 
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer; 
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%; 
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #f8cc02; /* Cor amarela do hover do botão antigo */
+}
+
+/* Mensagens de erro do JS */
+.erro-mensagem {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: block; 
+}
+
+input[style*="red"] + .erro-mensagem {
+    margin-bottom: 5px;
+}
+
+/* Tabela (usada em admin.html e adocao-lista.html) */
+table {
+    width: 90%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+    cursor: pointer; 
+} 	
+
+/* Botões de Filtro (adocao-lista.html) */
+.filter-btn {
+    background-color: #f8f9fa;
+    color: #343a40;
+    border: 1px solid #ced4da;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 1em;
+}
+
+.filter-btn:hover {
+    background-color: #e2e6ea;
+}
+
+.filter-btn.active {
+    background-color: #5cb85c;
+    color: white;
+    border-color: #4cae4c;
+    font-weight: bold;
+}
+
+/* Botão de Excluir (admin.html) */
+.btn-excluir {
+    background-color: #dc3545; /* Vermelho */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-excluir:hover {
+    background-color: #c82333;
+}
+
+/* =========================================
+   9. MEDIA QUERIES (Responsividade)
+   ========================================= */
+
+/* Para o Layout da Página Inicial (Grid) */
+@media (max-width: 768px) {
+    .page-container {
+        grid-template-columns: 1fr; /* Coluna única */
+    }
+
+    .sidebar {
+        margin-top: 40px; /* Sidebar vai para baixo */
+    }
+}
+
+/* Para as Páginas de Formulário de Adoção */
+@media (max-width: 600px) {
+    
+    /* Esta regra é específica para as páginas de formulário
+       que usam 'padding-top: 80px' no body */
+    body {
+        padding: 10px; 
+    }
+
+    header {
+        flex-direction: column; 
+        padding: 10px 15px;
+    }
+    
+    nav ul {
+        justify-content: center; 
+    }
+
+    form {
+        padding: 20px 15px; 
+        max-width: 100%; 
+        box-shadow: none; 
+    }
+
+    h1 {
+        font-size: 1.5em; 
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="file"],
+    select,
+    textarea {
+        width: 100%; 
+        box-sizing: border-box; 
+    }
+    
+    div > label {
+        margin-right: 10px;
+    }
+}

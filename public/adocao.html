@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Adoção - Encontre um Amigo</title>
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        .home-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 80px); /* Ajuste para o header */
+            text-align: center;
+            padding: 20px;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            justify-content: center;
+        }
+        .action-btn {
+            display: block;
+            width: 250px;
+            padding: 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+        .btn-adotar {
+            background-color: #5cb85c; /* Verde */
+            color: white;
+        }
+        .btn-cadastrar {
+            background-color: #f0ad4e; /* Laranja */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/" id="logo-btn">
+                        <img src="/Logo Sanches.png" alt="Início - Logo CMS Institucional">
+                    </a>
+                </li>
+
+                <li><a href="/mobilidade.html">Mobilidade</a></li>
+                <li><a href="/seguranca.html">Segurança Pública</a></li>
+                <li><a href="/causa-animal.html">Causa Animal</a></li>
+                <li><a href="/familia.html">Família</a></li>
+                <li><a href="/esporte.html">Esporte</a></li>
+                <li><a href="/noticias.html">Notícias</a></li>
+                <li><a href="/cadastro.html">Cadastrar Animal</a></li>
+                <li><a href="/adocao-lista.html">Ver Animais</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="home-container">
+        <h1>Bem-vindo!</h1>
+        <div class="action-buttons">
+            <a href="/adocao-lista.html" class="action-btn btn-adotar">Encontre um amigo!</a>
+            <a href="/cadastro.html" class="action-btn btn-cadastrar">Ajude um peludinho!</a>
+        </div>
+    </div>
+</body>
+</html>

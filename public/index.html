@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS Institucional - Início</title>
+    <link rel="stylesheet" href="/style.css"> 
+</head>
+<body>
+<header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/" id="logo-btn">
+                        <img src="/Logo Sanches.png" alt="Início - Logo CMS Institucional">
+                    </a>
+                </li>
+
+                <li><a href="/mobilidade.html">Mobilidade</a></li>
+                <li><a href="/seguranca.html">Segurança Pública</a></li>
+                <li><a href="/causa-animal.html">Causa Animal</a></li>
+                <li><a href="/familia.html">Família</a></li>
+                <li><a href="/esporte.html">Esporte</a></li>
+                <li><a href="/noticias.html">Notícias</a></li>
+                <li><a href="/adocao.html">Encontre um AUmigo!</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-container">
+        
+        <main class="main-content">
+            <h1>Bem-vindo ao site do CMS Institucional</h1>
+            <p>Aqui você encontrará informações sobre meu mandato, projetos e muito mais.</p>
+
+            <section id="recent-news-carousel">
+            <h2>Destaques da Semana</h2>
+            <div id="slides-container">
+                <p>Carregando notícias...</p>
+                </div>
+            
+            <p id="carousel-news-description" class="carousel-description">
+                </p>
+            </section>
+
+        </main>
+
+        <aside class="sidebar">
+            
+            <div class="sidebar-widget">
+                <h3>Conheça o Vereador</h3>
+                <a href="/sobre.html">
+                    <img src="Foto Sanches.png" alt="Conheça o CMS Institucional" style="width: 100%;">
+                </a>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Adoção de Animais</h3>
+                <a href="/adocao.html">
+                    <img src="Causa Animal Sanches.png" alt="Adote um AUmigo" style="width: 100%;">
+                </a>
+            </div>
+
+            <div class="sidebar-widget">
+            <h3>Na Mídia</h3>
+            <ul>
+                <li><a href="https://www.youtube.com/playlist?list=PLxOHGIIK0yEFlTv0u38w-xjSYKkfcVvrn" target="_blank">Podcast Institucional</a></li>
+                <li><a href="https://www.instagram.com/sanchesdafederal" target="_blank">Instagram</a></li>
+
+                <li class="submenu-trigger">
+                    <span id="trigger-participacoes">Participações Especiais</span>
+
+                    <ul id="submenu-participacoes" class="submenu-content">
+                        <li><a href="LINK_PARTICIPACAO_1" target="_blank">Entrevista Rádio X</a></li>
+                        <li><a href="LINK_PARTICIPACAO_2" target="_blank">Debate TV Y</a></li>
+                        <li><a href="LINK_PARTICIPACAO_3" target="_blank">Matéria Jornal Z</a></li>
+                        <li><a href="LINK_PARTICIPACAO_4" target="_blank">Teste</a></li>
+                    </ul>
+                </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Contato</h3>
+                <ul>
+                    <li><a href="https://api.whatsapp.com/message/QGDQV57QMVWDB1?autoload=1&app_absent=0" target="_blank">Whatsapp</a></li>
+                    <li><a href="mailto:sanchesdafederal@gmail.com?subject=Email%20enviado%20pelo%20site&body=Ol%C3%A1%2C%20gostaria%20de%20poder%20discutir%20com%20Vereador%20Sanches%20sobre%20">Email</a></li>
+                    <li><a href="https://linktr.ee/sanchesdafederal?utm_source=linktree_admin_share&fbclid=PAZXh0bgNhZW0CMTEAAadlbkVFapzrJkRZFcxKfJnpR5a9iYxFfygJ1fjIgUdVeIQFsMliZTBPtdIkOQ_aem_wVpSmWnl1egn4dxih27R7Q" target="_blank">LinkTree</a></li>
+                </ul>
+            </div>
+
+        </aside>
+    
+    </div> <footer>
+        </footer>
+
+    <script src="/js/main.js"></script>
+
+<div id="news-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span id="modal-close-btn" class="modal-close">&times;</span>
+            
+            <img id="modal-news-image" src="" alt="Imagem da Notícia" style="width:100%; max-height: 300px; object-fit: cover; border-radius: 5px; margin-bottom: 15px;">
+            <h2 id="modal-news-title"></h2>
+            <p id="modal-news-date" style="font-style: italic; font-size: 0.9em; color: #555;"></p>
+            <div id="modal-news-content"></div>
+            
+            <a href="/noticias.html" style="display: block; margin-top: 20px; font-weight: bold;">Ver todas as notícias...</a>
+        </div>
+    </div>
+    </body>
+</html>
